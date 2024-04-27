@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ChatApp</title>
+    <link rel="stylesheet" type="text/css" href="ChatApp.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+</head>
+<body onload="getNames()">
+    <div class="top">
+        <h1><strong>ChatApp</strong></h1>
+        <p>&nbsp;&nbsp;&nbsp;Accounts currently active: <span id="active"></span></p>
+    </div>
+    <div class="box">
+        <div class="text sender">
+            <label for="sender">Enter your Name:&emsp;&ensp;</label>
+            <input class="input" name="sender" id="sender" type="text"><br>
+            <label for="userPassword">Enter your Password:</label>
+            <input class="input" name="userPassword" id="userPassword" type="password"><br>
+            <label>Message will be sent as typed</label><br>
+            <textarea onkeyup="updateMessage(document.getElementById('sender').value, document.getElementById('userPassword').value, this.value)" name="content" id="content1" cols="67" rows="9" placeholder="Send chats here: "></textarea><br><br>
+        </div>
+        <div class="text receiver">
+            <label>Enter a valid name: </label><input class="input" name="receiver" id="receiver" type="text" onkeyup="listenMessage(document.getElementById('receiver').value)"><br><br>
+            <textarea name="content2" id="content2" cols="67" rows="9" placeholder="Chat retrieved..."></textarea>
+        </div>
+    </div>
+    <div>
+        <div class="topLeft">
+            <label>Status </label><input class= "status" name="error" id="error" type="text">
+        </div>
+        <div class="topRight">
+            <div class="dropdown">
+                <button class="dropButton">Manage Account</button>
+                    <div class="dropdown-content">
+                        <a class="links" href="https://web.njit.edu/~as4384/ChatAppSignUp.html">Sign Up!</a>
+                        <a class="links" href="https://web.njit.edu/~as4384/deleteAccount.html">Delete Account</a>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <script src="ChatApp.js"></script>
+</body>
+</html>
