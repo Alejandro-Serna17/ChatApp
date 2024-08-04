@@ -6,7 +6,7 @@ function updateMessage(name, password, content) {
      document.getElementById('error').value = this.responseText;
 }
 };
-xmlhttp.open("GET", "AssignmentFive.php?type=write&name=" + name + "&password=" + password + "&content=" + content, true);
+xmlhttp.open("GET", "ChatApp.php?type=write&name=" + name + "&password=" + password + "&content=" + content, true);
 xmlhttp.send();
 }
 var interval = null;
@@ -21,7 +21,7 @@ function listenMessage(name) {
 };
 clearInterval(interval);
 interval = setInterval(function () {
-xmlhttp2.open("GET", "AssignmentFive.php?type=read&name=" + name, true);
+xmlhttp2.open("GET", "ChatApp.php?type=read&name=" + name, true);
 xmlhttp2.send();
 }, 500);
 }
@@ -33,6 +33,6 @@ function getNames() {
    document.getElementById('active').innerHTML = this.responseText;
 }
 };
-xmlhttp3.open("GET", "AssignmentFive.php?type=name", true);
+xmlhttp3.open("GET", "ChatApp.php?type=name", true);
 xmlhttp3.send();
 }
