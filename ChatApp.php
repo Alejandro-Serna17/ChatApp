@@ -13,24 +13,24 @@ $conn = new mysqli($servername, $username, $dbpassword, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-if ($type == 'write') {
+if ($type == 'write'){
     $sql2 = "SELECT * FROM ChatDB WHERE `Name`='" . $nameP . "'";
     $result = $conn->query($sql2);
     if ($result->num_rows > 0) {
-    $sql = "UPDATE ChatDB SET `LiveChat` = '". $content ."' WHERE `Name`='" . $nameP . "' AND `Password`='" . $password . "'";
-      if($conn->query($sql)) {
-         $result4 = 'Success';
-} else {
-      $result4 = 'Error: ' . $sql . ' ' . $conn->error;
-}
-} else {
-      $sql = "INSERT INTO ChatDB (`Name`, `Password`, `LiveChat`) VALUES ('".$nameP."','".$password."','".$content."')";
-      if($conn->query($sql)) {
-      $result4 = 'Success';
-} else {
-       $result4 = 'Error: ' . $sql . ' ' . $conn->error;
-}
-}
+        $sql = "UPDATE ChatDB SET `LiveChat` = '". $content ."' WHERE `Name`='" . $nameP . "' AND `Password`='" . $password . "'";
+        if($conn->query($sql)) {
+            $result4 = 'Success';
+        } else {
+            $result4 = 'Error: ' . $sql . ' ' . $conn->error;
+        }
+    } else {
+        $sql = "INSERT INTO ChatDB (`Name`, `Password`, `LiveChat`) VALUES ('".$nameP."','".$password."','".$content."')";
+        if($conn->query($sql)) {
+        $result4 = 'Success';
+        } else {
+        $result4 = 'Error: ' . $sql . ' ' . $conn->error;
+        }
+    }
 } else if ($type == 'read'){
     $result = $conn->prepare("SELECT LiveChat FROM ChatDB WHERE `Name` = ?");
     $result->bind_param("s", $nameP);
@@ -42,11 +42,11 @@ if ($type == 'write') {
     $result4 = $cont;
 } else if ($type == 'name') {
     $result = $conn->query("SELECT `Name` FROM ChatDB");
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
+    if ($result->num_rows > 0){
+        while ($row = $result->fetch_assoc()){
             $result4 .= (" " . $row['Name']);
-}
-}
+        }
+    }
 }
 echo $result4;
 $conn->close();
